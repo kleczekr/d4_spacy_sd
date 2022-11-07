@@ -29,7 +29,12 @@ def lemma_or_chunk(sentence):
             counter += 1
             continue
         else:
-            element_list.append(doc[counter].lemma_)
+            if doc[counter].pos_ == 'AUX':
+                element_list.append(f'to {doc[counter].lemma_}, pictogram, abstract representation')
+            elif doc[counter].pos_ == 'VERB':
+                element_list.append(f'to {doc[counter].lemma_}, pictogram, abstract representation')
+            else:
+                element_list.append(f'{doc[counter].lemma_}, pictogram, abstract representation')
             counter += 1
     return element_list
 
